@@ -237,7 +237,7 @@ class CineGUI:
         ttk.Button(form, text="Agregar Función", command=self.agregar_funcion).grid(row=3, columnspan=2, pady=10)
     
     def cargar_datos_ejemplo(self):
-        # Películas de ejemplo con sus géneros correctos
+        # Películas de ejemplo con sus géneros 
         self.peliculas = [
             {"titulo": "Star Wars: Episodio IV - Una nueva esperanza", "duracion": 121, "clasificacion": "A", 
              "genero": "Ciencia ficción", "director": "George Lucas"},
@@ -294,20 +294,20 @@ class CineGUI:
         self.actualizar_mis_reservas()
     
     def actualizar_listas(self):
-        # Actualizar listas de películas
+        
         self.peliculas_tree.delete(*self.peliculas_tree.get_children())
         for pelicula in self.peliculas:
             self.peliculas_tree.insert('', 'end', text=pelicula["titulo"], 
                                      values=(pelicula["duracion"], pelicula["clasificacion"], 
                                              pelicula["genero"], pelicula["director"]))
         
-        # Actualizar combobox de películas (para funciones)
+        
         self.func_pelicula['values'] = [p["titulo"] for p in self.peliculas]
         
-        # Actualizar combobox de salas
+        
         self.func_sala['values'] = [s["nombre"] for s in self.salas]
         
-        # Actualizar lista de funciones
+        
         self.funciones_tree.delete(*self.funciones_tree.get_children())
         for funcion in self.funciones:
             self.funciones_tree.insert('', 'end', text=funcion["pelicula"], 
